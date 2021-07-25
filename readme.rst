@@ -1,7 +1,7 @@
 ###################
-Simple Absensi QR Code
+Sistem informasi parkir via QR Code
 ###################
 
-Absensi Karyawan berbasis QR CODE dengan framework CI3
+Sistem parkir kendaraan berbasis QR CODE dengan framework CI3
 
 
