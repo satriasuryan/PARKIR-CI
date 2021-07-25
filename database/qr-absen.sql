@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 21 Des 2019 pada 07.56
--- Versi server: 10.1.38-MariaDB
--- Versi PHP: 7.3.2
+-- Generation Time: Jul 25, 2021 at 08:03 AM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -25,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `groups`
+-- Table structure for table `groups`
 --
 
 CREATE TABLE `groups` (
@@ -37,57 +36,48 @@ CREATE TABLE `groups` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `groups`
+-- Dumping data for table `groups`
 --
 
 INSERT INTO `groups` (`id`, `name`, `description`, `created_on`, `created_by`) VALUES
-(1, 'admin', 'Administrator', '2019-06-03 08:39:48', NULL),
-(2, 'Komisaris', 'Komisaris', '2019-06-03 08:53:52', NULL),
-(3, 'Operator', 'Operator', '2019-06-03 08:50:08', NULL);
+(1, 'Operator', 'operator', '2019-06-03 08:39:48', NULL),
+(2, 'Admin', 'Admin', '2019-06-03 08:53:52', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `karyawan`
+-- Table structure for table `karyawan`
 --
 
 CREATE TABLE `karyawan` (
   `id` int(11) NOT NULL,
-  `id_karyawan` int(11) NOT NULL,
-  `nama_karyawan` varchar(30) NOT NULL
+  `nama_civitas` varchar(255) NOT NULL,
+  `status_civitas` varchar(255) NOT NULL,
+  `nip_nim` varchar(50) NOT NULL,
+  `plat_nomor` varchar(11) NOT NULL,
+  `jenis_kendaraan` varchar(255) NOT NULL,
+  `merk` varchar(255) NOT NULL,
+  `foto_stnk` varchar(255) DEFAULT NULL,
+  `status_kendaraan` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
--- Dumping data untuk tabel `karyawan`
+-- Dumping data for table `karyawan`
 --
 
-INSERT INTO `karyawan` (`id`, `id_karyawan`, `nama_karyawan`) VALUES
-(1, 3939393, 'Maruli'),
-(2, 1630511088, 'Robby'),
-(3, 1630511066, 'Yoga');
+INSERT INTO `karyawan` (`id`, `nama_civitas`, `status_civitas`, `nip_nim`, `plat_nomor`, `jenis_kendaraan`, `merk`, `foto_stnk`, `status_kendaraan`) VALUES
+(39, 'satria', 'Mahasiswa', '0110216031', 'f3463gf', 'Motor', 'Honda Beat Street', NULL, 'Terverifikasi'),
+(42, 'reda', 'Mahasiswa', '0110216055', 'b3421kk', 'Motor', 'honda mio', NULL, 'Terverifikasi'),
+(43, 'rendi', 'Mahasiswa', '0110216033', 'f3456hh', 'Motor', 'Yamaha Vega', NULL, 'Terverifikasi'),
+(44, 'reno', 'Mahasiswa', '0110216033', 'f1234gg', 'Motor', 'Yamaha Vega', NULL, 'Terverifikasi'),
+(45, 'sanji', 'Mahasiswa', '0110216053', 'f3456kk', 'Motor', 'Yamaha Mio', NULL, 'Terverifikasi'),
+(46, 'zoro', 'Mahasiswa', '256235223', 'f2342tt', 'Motor', 'yamaha mio', NULL, 'Terverifikasi'),
+(47, 'kencana', 'Mahasiswa', '0110216031', 'f4567dd', 'Motor', 'Honda Beat Street', NULL, 'Terverifikasi');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kehadiran`
---
-
-CREATE TABLE `kehadiran` (
-  `id_khd` int(11) NOT NULL,
-  `nama_khd` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `kehadiran`
---
-
-INSERT INTO `kehadiran` (`id_khd`, `nama_khd`) VALUES
-(1, 'Hadir');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `login_attempts`
+-- Table structure for table `login_attempts`
 --
 
 CREATE TABLE `login_attempts` (
@@ -100,31 +90,33 @@ CREATE TABLE `login_attempts` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `presensi`
+-- Table structure for table `presensi`
 --
 
 CREATE TABLE `presensi` (
   `id_absen` int(11) NOT NULL,
-  `id_karyawan` int(11) NOT NULL,
-  `tgl` date NOT NULL,
-  `jam_msk` time NOT NULL,
-  `jam_klr` time NOT NULL,
-  `id_khd` int(11) DEFAULT NULL,
+  `plat_nomor` varchar(255) NOT NULL,
+  `jam_msk` datetime NOT NULL,
+  `jam_klr` datetime NOT NULL,
   `id_status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `presensi`
+-- Dumping data for table `presensi`
 --
 
-INSERT INTO `presensi` (`id_absen`, `id_karyawan`, `tgl`, `jam_msk`, `jam_klr`, `id_khd`, `id_status`) VALUES
-(1, 3939393, '2019-06-03', '22:19:05', '22:35:00', 1, 2),
-(2, 1630511088, '2019-12-21', '13:17:21', '13:48:40', 1, 2);
+INSERT INTO `presensi` (`id_absen`, `plat_nomor`, `jam_msk`, `jam_klr`, `id_status`) VALUES
+(30, 'f3463gf', '2021-07-22 08:09:56', '2021-07-22 08:10:03', 2),
+(31, 'b3421kk', '2021-07-22 09:04:27', '2021-07-22 09:04:27', 2),
+(33, 'f1234gg', '2021-07-22 09:24:53', '2021-07-22 09:25:27', 2),
+(34, 'f2342tt', '2021-07-23 08:43:12', '2021-07-23 08:43:40', 2),
+(35, 'f4567dd', '2021-07-25 13:02:31', '0000-00-00 00:00:00', 1),
+(36, 'f3456kk', '2021-07-25 13:02:50', '0000-00-00 00:00:00', 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `stts`
+-- Table structure for table `stts`
 --
 
 CREATE TABLE `stts` (
@@ -133,7 +125,7 @@ CREATE TABLE `stts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `stts`
+-- Dumping data for table `stts`
 --
 
 INSERT INTO `stts` (`id_status`, `nama_status`) VALUES
@@ -143,7 +135,7 @@ INSERT INTO `stts` (`id_status`, `nama_status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -169,16 +161,17 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(26, '::1', 'admin', '$2y$12$dHbea5q2Bkq8nGh3Wk38zeH2ZoWwcSqmEC1Kz2hdZQG6nfkCNmqna', 'admin@admin.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1556798313, 1576911343, 1, 'Merlin', 'Lilin', 'PT KARYA ALAM MANDIRI', '123412341234');
+(26, '::1', 'operator', '$2y$10$53WRlHrmyxKl5TqWWjMS.ui1SvEuKoLJzCudTbeQYDIyhJ1oXtt92', 'operator@operator.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1556798313, 1627192730, 1, 'satria', 'aja', 'PT KARYA ALAM MANDIRI', '123412341234'),
+(27, '::1', 'admin', '$2y$10$Du3ZydCUYZIEZWCQV36cmO25Moi9cWFfpfbNX5k45G4TQ6NXn2O9e', 'admin@admin.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 12451352, 2523255, 1, 'admin', 'admin', 'stt nurul fikri', '08476352738');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users_groups`
+-- Table structure for table `users_groups`
 --
 
 CREATE TABLE `users_groups` (
@@ -188,54 +181,50 @@ CREATE TABLE `users_groups` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `users_groups`
+-- Dumping data for table `users_groups`
 --
 
 INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
-(29, 26, 1);
+(29, 26, 1),
+(30, 27, 1);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `groups`
+-- Indexes for table `groups`
 --
 ALTER TABLE `groups`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `karyawan`
+-- Indexes for table `karyawan`
 --
 ALTER TABLE `karyawan`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id_karyawan` (`plat_nomor`);
 
 --
--- Indeks untuk tabel `kehadiran`
---
-ALTER TABLE `kehadiran`
-  ADD PRIMARY KEY (`id_khd`);
-
---
--- Indeks untuk tabel `login_attempts`
+-- Indexes for table `login_attempts`
 --
 ALTER TABLE `login_attempts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `presensi`
+-- Indexes for table `presensi`
 --
 ALTER TABLE `presensi`
   ADD PRIMARY KEY (`id_absen`);
 
 --
--- Indeks untuk tabel `stts`
+-- Indexes for table `stts`
 --
 ALTER TABLE `stts`
   ADD PRIMARY KEY (`id_status`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -245,7 +234,7 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `uc_remember_selector` (`remember_selector`);
 
 --
--- Indeks untuk tabel `users_groups`
+-- Indexes for table `users_groups`
 --
 ALTER TABLE `users_groups`
   ADD PRIMARY KEY (`id`),
@@ -254,63 +243,57 @@ ALTER TABLE `users_groups`
   ADD KEY `fk_users_groups_groups1_idx` (`group_id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `groups`
+-- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
   MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `karyawan`
+-- AUTO_INCREMENT for table `karyawan`
 --
 ALTER TABLE `karyawan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
--- AUTO_INCREMENT untuk tabel `kehadiran`
---
-ALTER TABLE `kehadiran`
-  MODIFY `id_khd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT untuk tabel `login_attempts`
+-- AUTO_INCREMENT for table `login_attempts`
 --
 ALTER TABLE `login_attempts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT untuk tabel `presensi`
+-- AUTO_INCREMENT for table `presensi`
 --
 ALTER TABLE `presensi`
-  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
--- AUTO_INCREMENT untuk tabel `stts`
+-- AUTO_INCREMENT for table `stts`
 --
 ALTER TABLE `stts`
   MODIFY `id_status` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- AUTO_INCREMENT untuk tabel `users_groups`
+-- AUTO_INCREMENT for table `users_groups`
 --
 ALTER TABLE `users_groups`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `users_groups`
+-- Constraints for table `users_groups`
 --
 ALTER TABLE `users_groups`
   ADD CONSTRAINT `fk_users_groups_groups1` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
