@@ -25,18 +25,18 @@
                                     <tbody>
                                         <?php
                                         $start = 0;
-                                        foreach ($karyawan_data as $karyawan) { ?>
+                                        foreach ($kendaraan_data as $kendaraan) { ?>
                                             <tr>
                                                 <td><?php echo ++$start ?></td>
-                                                <td><?php echo $karyawan->nama_civitas ?></td>
-                                                <td><?php echo $karyawan->status_civitas ?></td>
-                                                <td><?php echo $karyawan->nip_nim ?></td>
-                                                <td><?php echo $karyawan->plat_nomor ?></td>
-                                                <td><?php echo $karyawan->jenis_kendaraan ?></td>
-                                                <td><?php echo $karyawan->merk ?></td>
-                                                <td><?php if ($karyawan->status_kendaraan == "Terverifikasi") { ?>
+                                                <td><?php echo $kendaraan->nama_civitas ?></td>
+                                                <td><?php echo $kendaraan->status_civitas ?></td>
+                                                <td><?php echo $kendaraan->nip_nim ?></td>
+                                                <td><?php echo $kendaraan->plat_nomor ?></td>
+                                                <td><?php echo $kendaraan->jenis_kendaraan ?></td>
+                                                <td><?php echo $kendaraan->merk ?></td>
+                                                <td><?php if ($kendaraan->status_kendaraan == "Terverifikasi") { ?>
                                  <h4><span class="label label-success"> Terverifikasi</span></h4>
-                              <?php } else if ($karyawan->status_kendaraan == "Tidak Terverifikasi") { ?>
+                              <?php } else if ($kendaraan->status_kendaraan == "Tidak Terverifikasi") { ?>
                                  <h4><span class="label label-danger"> Tidak Terverifikasi </span></h4>
                               <?php  } else { ?>
                                  <h4><span class="label label-default"> Belum Terverifikasi </span></h4>

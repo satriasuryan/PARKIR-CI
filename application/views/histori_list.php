@@ -110,21 +110,21 @@
                   <tbody>
                      <?php
                      $start = 0;
-                     foreach ($presensi_data as $presensi) {  ?>
+                     foreach ($histori_data as $histori) {  ?>
                         <tr>
                            <td><?php echo ++$start ?></td>
-                           <td><?php echo $presensi->nama_civitas ?></td>
-                           <td><?php echo $presensi->nip_nim ?></td>
-                           <td><?php echo $presensi->plat_nomor ?></td>
-                           <td><?php echo $presensi->merk ?></td>
-                           <td><?php echo $presensi->jam_msk ?></td>
-                           <td><?php echo $presensi->jam_klr ?></td>
-                           <td><?php if ($presensi->id_status == 1) { ?>
-                                 <h4><span class="label label-success"> <?php echo $presensi->nama_status ?></span></h4>
-                              <?php } else if ($presensi->id_status == 2) { ?>
-                                 <h4><span class="label label-danger"> <?php echo $presensi->nama_status ?> </span></h4>
+                           <td><?php echo $histori->nama_civitas ?></td>
+                           <td><?php echo $histori->nip_nim ?></td>
+                           <td><?php echo $histori->plat_nomor ?></td>
+                           <td><?php echo $histori->merk ?></td>
+                           <td><?php echo $histori->jam_msk ?></td>
+                           <td><?php echo $histori->jam_klr ?></td>
+                           <td><?php if ($histori->id_status == 1) { ?>
+                                 <h4><span class="label label-success"> <?php echo $histori->nama_status ?></span></h4>
+                              <?php } else if ($histori->id_status == 2) { ?>
+                                 <h4><span class="label label-danger"> <?php echo $histori->nama_status ?> </span></h4>
                               <?php  } else { ?>
-                                 <h4><span class="label label-default"> <?php echo $presensi->nama_status ?> </span></h4>
+                                 <h4><span class="label label-default"> <?php echo $histori->nama_status ?> </span></h4>
                               <?php } ?>
                            </td>
                         </tr>

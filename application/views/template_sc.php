@@ -76,14 +76,14 @@
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu">
                     <li>
-                        <a href="<?php echo base_url('presensi') ?>">
+                        <a href="<?php echo base_url('histori') ?>">
                             <i class="fa fa-laptop"></i> <span>DASHBOARD</span>
                         </a>
                         <a href="<?php echo base_url('scan1') ?>">
                             <i class="fa fa-camera"></i> <span>SCAN QRCODE</span>
 
                         </a>
-                        <a href="<?php echo base_url('karyawan') ?>">
+                        <a href="<?php echo base_url('kendaraan') ?>">
                             <i class="fa fa-motorcycle"></i> <span>DATA KENDARAAN</span>
                         </a>
                     </li>

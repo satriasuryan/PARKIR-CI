@@ -6,7 +6,7 @@ $(function(){
     $('#color').colorpicker(); // Colopicker
     
 
-    var base_url='http://localhost/absensi/'; // Here i define the base_url
+    var base_url='http://localhost/parkir-ci/'; // Here i define the base_url
 
     // Fullcalendar
     $('#calendar').fullCalendar({

@@ -55,7 +55,7 @@ class Auth extends CI_Controller
 		if ($this->ion_auth->logged_in()){
 				$user_id = $this->ion_auth->user()->row()->id; // Get User ID
 				$group = $this->ion_auth->get_users_groups($user_id)->row()->name; // Get user group
-				redirect('presensi');
+				redirect('histori');
 			}
 			$this->data['identity'] = [
 				'name' => 'identity',
@@ -128,7 +128,7 @@ class Auth extends CI_Controller
 				//if the login is successful
 				//redirect them back to the home page
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect('/presensi', 'refresh');
+				redirect('/histori', 'refresh');
 			}
 			else
 			{
@@ -173,7 +173,7 @@ class Auth extends CI_Controller
 			$url = 'auth'; // url untuk redirect
 		}else{
 			$status = true; // jika true maka login berhasil
-			$url = 'presensi';
+			$url = 'histori';
 		}
 
 		$data = [

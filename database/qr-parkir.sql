@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 25, 2021 at 08:03 AM
+-- Generation Time: Jul 28, 2021 at 01:50 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -40,16 +40,41 @@ CREATE TABLE `groups` (
 --
 
 INSERT INTO `groups` (`id`, `name`, `description`, `created_on`, `created_by`) VALUES
-(1, 'Operator', 'operator', '2019-06-03 08:39:48', NULL),
-(2, 'Admin', 'Admin', '2019-06-03 08:53:52', NULL);
+(1, 'Operator', 'operator', '2019-06-03 08:39:48', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `karyawan`
+-- Table structure for table `histori`
 --
 
-CREATE TABLE `karyawan` (
+CREATE TABLE `histori` (
+  `id_histori` int(11) NOT NULL,
+  `plat_nomor` varchar(255) NOT NULL,
+  `jam_msk` datetime NOT NULL,
+  `jam_klr` datetime NOT NULL,
+  `id_status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `histori`
+--
+
+INSERT INTO `histori` (`id_histori`, `plat_nomor`, `jam_msk`, `jam_klr`, `id_status`) VALUES
+(30, 'f3463gf', '2021-07-22 08:09:56', '2021-07-22 08:10:03', 2),
+(31, 'b3421kk', '2021-07-22 09:04:27', '2021-07-22 09:04:27', 2),
+(33, 'f1234gg', '2021-07-22 09:24:53', '2021-07-22 09:25:27', 2),
+(34, 'f2342tt', '2021-07-23 08:43:12', '2021-07-23 08:43:40', 2),
+(35, 'f4567dd', '2021-07-25 13:02:31', '0000-00-00 00:00:00', 1),
+(36, 'f3456kk', '2021-07-25 13:02:50', '0000-00-00 00:00:00', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kendaraan`
+--
+
+CREATE TABLE `kendaraan` (
   `id` int(11) NOT NULL,
   `nama_civitas` varchar(255) NOT NULL,
   `status_civitas` varchar(255) NOT NULL,
@@ -62,10 +87,10 @@ CREATE TABLE `karyawan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
--- Dumping data for table `karyawan`
+-- Dumping data for table `kendaraan`
 --
 
-INSERT INTO `karyawan` (`id`, `nama_civitas`, `status_civitas`, `nip_nim`, `plat_nomor`, `jenis_kendaraan`, `merk`, `foto_stnk`, `status_kendaraan`) VALUES
+INSERT INTO `kendaraan` (`id`, `nama_civitas`, `status_civitas`, `nip_nim`, `plat_nomor`, `jenis_kendaraan`, `merk`, `foto_stnk`, `status_kendaraan`) VALUES
 (39, 'satria', 'Mahasiswa', '0110216031', 'f3463gf', 'Motor', 'Honda Beat Street', NULL, 'Terverifikasi'),
 (42, 'reda', 'Mahasiswa', '0110216055', 'b3421kk', 'Motor', 'honda mio', NULL, 'Terverifikasi'),
 (43, 'rendi', 'Mahasiswa', '0110216033', 'f3456hh', 'Motor', 'Yamaha Vega', NULL, 'Terverifikasi'),
@@ -86,32 +111,6 @@ CREATE TABLE `login_attempts` (
   `login` varchar(100) NOT NULL,
   `time` int(11) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `presensi`
---
-
-CREATE TABLE `presensi` (
-  `id_absen` int(11) NOT NULL,
-  `plat_nomor` varchar(255) NOT NULL,
-  `jam_msk` datetime NOT NULL,
-  `jam_klr` datetime NOT NULL,
-  `id_status` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `presensi`
---
-
-INSERT INTO `presensi` (`id_absen`, `plat_nomor`, `jam_msk`, `jam_klr`, `id_status`) VALUES
-(30, 'f3463gf', '2021-07-22 08:09:56', '2021-07-22 08:10:03', 2),
-(31, 'b3421kk', '2021-07-22 09:04:27', '2021-07-22 09:04:27', 2),
-(33, 'f1234gg', '2021-07-22 09:24:53', '2021-07-22 09:25:27', 2),
-(34, 'f2342tt', '2021-07-23 08:43:12', '2021-07-23 08:43:40', 2),
-(35, 'f4567dd', '2021-07-25 13:02:31', '0000-00-00 00:00:00', 1),
-(36, 'f3456kk', '2021-07-25 13:02:50', '0000-00-00 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -165,8 +164,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(26, '::1', 'operator', '$2y$10$53WRlHrmyxKl5TqWWjMS.ui1SvEuKoLJzCudTbeQYDIyhJ1oXtt92', 'operator@operator.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1556798313, 1627192730, 1, 'satria', 'aja', 'PT KARYA ALAM MANDIRI', '123412341234'),
-(27, '::1', 'admin', '$2y$10$Du3ZydCUYZIEZWCQV36cmO25Moi9cWFfpfbNX5k45G4TQ6NXn2O9e', 'admin@admin.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 12451352, 2523255, 1, 'admin', 'admin', 'stt nurul fikri', '08476352738');
+(26, '::1', 'operator', '$2y$10$53WRlHrmyxKl5TqWWjMS.ui1SvEuKoLJzCudTbeQYDIyhJ1oXtt92', 'operator@operator.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1556798313, 1627192730, 1, 'satria', 'aja', 'PT KARYA ALAM MANDIRI', '123412341234');
 
 -- --------------------------------------------------------
 
@@ -185,8 +183,7 @@ CREATE TABLE `users_groups` (
 --
 
 INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
-(29, 26, 1),
-(30, 27, 1);
+(29, 26, 1);
 
 --
 -- Indexes for dumped tables
@@ -199,9 +196,15 @@ ALTER TABLE `groups`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `karyawan`
+-- Indexes for table `histori`
 --
-ALTER TABLE `karyawan`
+ALTER TABLE `histori`
+  ADD PRIMARY KEY (`id_histori`);
+
+--
+-- Indexes for table `kendaraan`
+--
+ALTER TABLE `kendaraan`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id_karyawan` (`plat_nomor`);
 
@@ -210,12 +213,6 @@ ALTER TABLE `karyawan`
 --
 ALTER TABLE `login_attempts`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `presensi`
---
-ALTER TABLE `presensi`
-  ADD PRIMARY KEY (`id_absen`);
 
 --
 -- Indexes for table `stts`
@@ -253,9 +250,15 @@ ALTER TABLE `groups`
   MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `karyawan`
+-- AUTO_INCREMENT for table `histori`
 --
-ALTER TABLE `karyawan`
+ALTER TABLE `histori`
+  MODIFY `id_histori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
+--
+-- AUTO_INCREMENT for table `kendaraan`
+--
+ALTER TABLE `kendaraan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
@@ -263,12 +266,6 @@ ALTER TABLE `karyawan`
 --
 ALTER TABLE `login_attempts`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-
---
--- AUTO_INCREMENT for table `presensi`
---
-ALTER TABLE `presensi`
-  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `stts`

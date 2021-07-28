@@ -35,9 +35,9 @@ class Dashboard extends CI_Controller
 
     public function index()
     {
-        $karyawan = $this->Dashboard_model->get_all();
+        $kendaraan = $this->Dashboard_model->get_all();
         $data = array(
-            'karyawan_data' => $karyawan,
+            'kendaraan_data' => $kendaraan,
         );
 
         $this->template->load('topnav', 'dashboard', $data);
@@ -59,7 +59,7 @@ class Dashboard extends CI_Controller
             'foto_stnk' => set_value('foto_stnk'),
             'status_kendaraan' => set_value('status_kendaraan'),
         );
-        $this->template->load('topnav', 'karyawan_form', $data);
+        $this->template->load('topnav', 'kendaraan_form', $data);
     }
 
     public function create_action()

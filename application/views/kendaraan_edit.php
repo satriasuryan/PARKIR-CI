@@ -60,7 +60,7 @@
                         <input type="hidden" name="id" value="<?php echo $id; ?>" />
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary btn-lg btn3d"><?php echo $button ?></button>
-                            <a href="<?php echo site_url('karyawan') ?>" class="btn btn-default btn-lg">Cancel</a>
+                            <a href="<?php echo site_url('kendaraan') ?>" class="btn btn-default btn-lg">Cancel</a>
                         </div>
                 </form>
             </div><!-- /.box-body -->
